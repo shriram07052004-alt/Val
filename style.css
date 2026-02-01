@@ -116,3 +116,54 @@ button:active {
         width: 100%;
     }
 }
+
+/* Button group for Yes/No */
+.button-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.yes-btn, .no-btn {
+    padding: 12px 25px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+}
+
+.yes-btn {
+    background-color: #4CAF50;
+    color: white;
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.4);
+}
+
+.yes-btn:hover {
+    background-color: #45a049;
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(76, 175, 80, 0.6);
+}
+
+.yes-btn:active {
+    transform: scale(0.98);
+}
+
+.no-btn {
+    background-color: #ff6b6b;
+    color: white;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.4);
+}
+
+.no-btn:hover {
+    background-color: #ff5252;
+    transform: scale(1.08);
+    box-shadow: 0 6px 16px rgba(255, 107, 107, 0.6);
+}
+
+.no-btn:active {
+    transform: scale(0.98);
+}
