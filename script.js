@@ -1,13 +1,40 @@
 // Get elements from the page
-const button = document.getElementById("valentineBtn");
+const valentineBtn = document.getElementById("valentineBtn");
 const response = document.getElementById("response");
+const yesNoButtons = document.getElementById("yesNoButtons");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
 const heartsContainer = document.querySelector(".hearts");
 
-// When the button is clicked, show the loving message and hide the button
-button.addEventListener("click", () => {
-    response.textContent = "Yayyy \ud83d\udc96 I love you, Kavita! Happy Valentine's Day \ud83d\ude18";
-    button.style.display = "none";
+// When the valentine button is clicked, show yes/no buttons
+valentineBtn.addEventListener("click", () => {
+    response.textContent = "So... what do you say? 😋";
+    valentineBtn.style.display = "none";
+    yesNoButtons.style.display = "flex";
 });
+
+// Yes button click - show the loving message
+yesBtn.addEventListener("click", () => {
+    response.innerHTML = "<br>Yayyy 💖 I love you, Kavita! Happy Valentine's Day 😘";
+    yesNoButtons.style.display = "none";
+    // Trigger extra hearts celebration
+    for (let i = 0; i < 10; i++) {
+        setTimeout(createHeart, i * 100);
+    }
+});
+
+// No button - move away when hovering or trying to click
+noBtn.addEventListener("mouseenter", moveNoButton);
+noBtn.addEventListener("click", (e) => {
+    e.preventDefault();
+    moveNoButton();
+});
+
+function moveNoButton() {
+    const randomX = Math.random() * 200 - 100; // Random position between -100 and 100
+    const randomY = Math.random() * 200 - 100;
+    noBtn.style.transform = `translate(${randomX}px, ${randomY}px)`;
+}
 
 // Create a single floating heart element
 function createHeart() {
@@ -25,9 +52,8 @@ function createHeart() {
     const duration = Math.random() * 3 + 4;
     heart.style.animationDuration = duration + "s";
 
-    // Slight random horizontal drift
-    const drift = Math.random() * 40 - 20; // -20px to 20px
-    heart.style.setProperty("--drift", drift + "px");
+    // Position absolute for floating
+    heart.style.position = "absolute";
 
     heartsContainer.appendChild(heart);
 
